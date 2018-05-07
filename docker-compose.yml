@@ -1,0 +1,12 @@
+version: '3.4'
+services:
+  ros:
+    build:
+      context: .
+    entrypoint: /ros_entrypoint.sh
+    command: tail -f /dev/null
+    ports:
+      - '4567:4567'
+    volumes:
+      - './ros:/capstone/ros'
+      - './data:/capstone/data'

@@ -1,4 +1,16 @@
-This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car. For more information about the project, see the project introduction [here](https://classroom.udacity.com/nanodegrees/nd013/parts/6047fe34-d93c-4f50-8336-b70ef10cb4b2/modules/e1a23b06-329a-4684-a717-ad476f0d8dff/lessons/462c933d-9f24-42d3-8bdc-a08a5fc866e4/concepts/5ab4b122-83e6-436d-850f-9f4d26627fd9).
+# Self Driving Car Nanodegree - Capstone
+
+This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car.
+
+## Architecture
+
+# Waypoint Updater Node
+
+This package contains the waypoint updater node: `waypoint_updater.py`. The purpose of this node is to update the target velocity property of each waypoint based on traffic light and obstacle detection data. This node will subscribe to the `/base_waypoints`, `/current_pose`, `/obstacle_waypoint`, and `/traffic_waypoint` topics, and publish a list of waypoints ahead of the car with target velocities to the `/final_waypoints` topic.
+
+![Waypoint Updater Node](imgs/waypoint-updater-ros-graph.png)
+
+## Installation
 
 Please use **one** of the two installation options, either native **or** docker installation.
 
@@ -22,14 +34,14 @@ Please use **one** of the two installation options, either native **or** docker 
 ### Docker Installation
 [Install Docker](https://docs.docker.com/engine/installation/)
 
-Build the docker container
+Build the docker container using docker-compose
 ```bash
-docker build . -t capstone
+docker-compose build
 ```
 
-Run the docker file
+Run the docker using docker-compose
 ```bash
-docker run -p 4567:4567 -v $PWD:/capstone -v /tmp/log:/root/.ros/ --rm -it capstone
+docker-compose run
 ```
 
 ### Port Forwarding
