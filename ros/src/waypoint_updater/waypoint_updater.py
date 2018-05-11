@@ -24,7 +24,7 @@ as well as to verify your TL classifier.
 TODO (for Yousuf and Aaron): Stopline location for each traffic light.
 '''
 
-LOOKAHEAD_WPS = 200 # Number of waypoints we will publish. You can change this number
+LOOKAHEAD_WPS = 50 # Number of waypoints we will publish. You can change this number
 MAX_DECEL = 0.5
 
 
@@ -42,9 +42,8 @@ class WaypointUpdater(object):
         self.final_waypoints_pub = rospy.Publisher('final_waypoints', Lane, queue_size=1)
 
         # member variables you need below
-        self.pose = None
+        self.pose = None        
         self.waypoints_2d = None
-        self.base_waypoints = None
         self.waypoints_tree = None 
         self.base_lane = None
         self.stopline_wp_idx = -1
@@ -55,7 +54,7 @@ class WaypointUpdater(object):
         """define loop to control publish frecuency"""
         rate = rospy.Rate(50)
         while not rospy.is_shutdown():
-            if self.pose and self.base_waypoints and self.waypoints_tree:
+            if self.pose and self.base_lane and self.waypoints_tree:
                 closest_waypoint_idx = self.get_closest_waypoint_idx()
                 self.publish_waypoints(closest_waypoint_idx)
             rate.sleep()
@@ -82,19 +81,20 @@ class WaypointUpdater(object):
 
     def publish_waypoints(self, idx):
         final_lane = self.generate_lane()
-        self.final_waypoints_pub.publish(lane)
+        self.final_waypoints_pub.publish(final_lane)
 
     def generate_lane(self):
         lane = Lane()
-
+        lane.header = self.base_lane.header
         closest_idx = self.get_closest_waypoint_idx()
         farthest_idx = closest_idx + LOOKAHEAD_WPS
-        base_waypoints = self.base_lane.waypoints[closest_idx:farthest_idx]
+        
+        waypoints = self.base_lane.waypoints[closest_idx:farthest_idx]
 
         if self.stopline_wp_idx==-1 or (self.stopline_wp_idx >= farthest_idx):
-            lane.waypoints = base_waypoints
+            lane.waypoints = waypoints
         else:
-            lane.waypoints = self.decelerate_waypoints(base_waypoints, closest_idx)
+            lane.waypoints = self.decelerate_waypoints(waypoints, closest_idx)
         
         return lane
 
