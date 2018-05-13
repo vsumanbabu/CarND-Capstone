@@ -53,7 +53,8 @@ class TLDetector(object):
         self.bridge = CvBridge()
         
         dirname = os.path.dirname(__file__)
-        model_path = os.path.join(dirname, 'light_classification/models/frozen_inference_graph.pb')
+        model_name = self.config['model_name']
+        model_path = os.path.join(dirname, "light_classification/models/{}".format(model_name))
         label_path = os.path.join(dirname, 'light_classification/models/label_map.pbtxt')
         self.light_classifier = TLClassifier(model_path, label_path)
         self.listener = tf.TransformListener()
