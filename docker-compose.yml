@@ -3,7 +3,6 @@ services:
   ros:
     build:
       context: .
-    entrypoint: /ros_entrypoint.sh
     command: tail -f /dev/null
     ports:
       - '4567:4567'

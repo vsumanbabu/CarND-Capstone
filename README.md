@@ -57,9 +57,9 @@ Build the docker container using docker-compose
 docker-compose build
 ```
 
-Run the docker using docker-compose
+Access to the docker using docker-compose
 ```bash
-docker-compose run
+docker-compose exec ros bash
 ```
 
 ### Port Forwarding
