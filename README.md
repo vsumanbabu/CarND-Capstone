@@ -2,6 +2,14 @@
 
 This is the project repo for the final project of the Udacity Self-Driving Car Nanodegree: Programming a Real Self-Driving Car.
 
+# Team
+
+| Name | Email | Slack |
+| --- | --- | --- |
+| Roberto Arce | robertoarcee@gmail.com | @rarce  (Team Lead) |
+| Nithin Alex John	| nithinalexjohn@gmail.com	| @nithinalex|
+|	Farhan Ahmad |	farhanhubble@gmail.com |	@farhanhubble	|
+|	Saurabh Sood |	saurabh.pec@gmail.com |	@saurabhsood |
 
 ## Architecture
 
