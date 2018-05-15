@@ -10,6 +10,7 @@ This is the project repo for the final project of the Udacity Self-Driving Car N
 | Nithin Alex John	| nithinalexjohn@gmail.com	| @nithinalex|
 |	Farhan Ahmad |	farhanhubble@gmail.com |	@farhanhubble	|
 |	Saurabh Sood |	saurabh.pec@gmail.com |	@saurabhsood |
+|	Suman V |	vsumanbabu@gmail.com |	@sumanv |
 
 ## Architecture
 
